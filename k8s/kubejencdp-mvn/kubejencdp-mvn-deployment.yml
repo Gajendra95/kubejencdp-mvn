@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: mavenproject
+  name: mavenproject-dc
 spec:
   replicas: 1
   template:
@@ -11,7 +11,7 @@ spec:
         updateTimestamp: "__TIMESTAMP__"
     spec:
       containers:
-      - name: mavenproject
+      - name: mavenproject-ctr
         image: sreedocker123/mavenproject:latest
         env:
           - name: DEPLOY_TIMESTAMP
