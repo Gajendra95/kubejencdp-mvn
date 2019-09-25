@@ -8,14 +8,12 @@ spec:
     metadata:
       labels:
         app: mavenproject
-        updateTimestamp: "__TIMESTAMP__"
+        
     spec:
       containers:
       - name: mavenproject-ctr
         image: sreedocker123/mavenproject:latest
-        env:
-          - name: DEPLOY_TIMESTAMP
-            value: "__TIMESTAMP__"
+        
         volumeMounts:
         - name: tls-secrets
           readOnly: true
