@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mavenproject-dc
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mavenproject
+        
+    spec:
+      containers:
+      - name: mavenproject-ctr
+        image: sreedocker123/mavenproject:latest
+        
+        volumeMounts:
+        - name: tls-secrets
+          readOnly: true
+          mountPath: "/var/www/app/tls"
+        ports:
+        - containerPort: 8080
+          name: http
+        imagePullPolicy: Always
+      volumes:
+      - name: tls-secrets
+        secret:
+          secretName: api-tls-secret
