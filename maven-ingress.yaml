@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: mavenproject-ingress
+  annotations:
+    kubernetes.io/ingress.allow-http: "true"
+spec:
+  tls:
+  - secretName: api-tls-secret
+  backend:
+    serviceName: mavenproject-svc
+    servicePort: http
